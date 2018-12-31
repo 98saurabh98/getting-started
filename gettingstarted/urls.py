@@ -16,10 +16,8 @@ import blog
 # Learn more here: https://docs.djangoproject.com/en/2.1/topics/http/urls/
 
 urlpatterns = [
-	path("", include('blog.urls')),
-	path("start/", include('hello.urls')),
-#	path("", bv.index, name="index"),
-    
-#    path("db/", include(hello.urls)),
-    path("admin/", admin.site.urls),
+    url(r'^admin/', admin.site.urls),
+    url(r'^accounts/login/$', views.login, name='login'),
+    url(r'^accounts/logout/$', views.logout, name='logout', kwargs={'next_page': '/'}),
+    url(r'', include('blog.urls')),
 ]
